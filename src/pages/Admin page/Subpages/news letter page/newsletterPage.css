@@ -1,0 +1,22 @@
+.newsletter-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-btn-container > button {
+    font-size: 1.1rem;
+    background-color: var(--logo-blob);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    border-radius: 3px;
+    transition: background-color 200ms ease;
+}
+.newsletter-btn-container > button:hover {
+    background-color: var(--hover-link-color);
+}
+.newsletter-btn-container > button svg {
+    stroke: #ff5454;
+}

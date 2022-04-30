@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&display=swap");
+.not-found-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    min-height: calc(100vh - 10rem);
+}
+
+.not-found-main-container .headings-container .not-found-heading {
+    font-size: clamp(6rem, 5vw + 5rem, 10rem);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.not-found-main-container .headings-container {
+    margin-bottom: 1rem;
+}
+
+.not-found-main-container .headings-container .not-found-main-heading {
+    background-image: url("https://images.unsplash.com/photo-1519810755548-39cd217da494?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1888&q=80");
+    background-size: cover;
+    background-position: center right;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.not-found-main-container .sub-heading {
+    font-weight: 500;
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.3rem);
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+
+.not-found-main-container .sub-heading::before {
+    content: "";
+    width: 3rem;
+    margin-bottom: 0.3rem;
+    opacity: 0.2;
+    height: 2px;
+    display: block;
+    background-color: var(--text-color);
+    border-radius: 100vh;
+}
+
+.not-found-main-container .info {
+    font-weight: normal;
+    font-size: 0.7rem;
+    opacity: 0.76;
+    margin-bottom: 2rem;
+}
+
+.not-found-main-container > a {
+    background-color: rgb(59, 117, 205);
+    padding: 0.7rem 2rem;
+    color: white;
+    word-spacing: 3px;
+    border-radius: 100vh;
+    font-weight: 500;
+    box-shadow: rgba(4, 53, 128, 0.5) 0px 30px 60px -12px inset,
+        rgba(1, 58, 144, 0.8) 0px 18px 36px -18px inset;
+    text-transform: uppercase;
+
+    font-size: 0.88rem;
+    transition: padding 200ms ease;
+}
+.not-found-main-container > a:hover {
+    padding: 0.7rem 2.5rem;
+}

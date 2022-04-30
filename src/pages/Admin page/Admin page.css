@@ -1,0 +1,366 @@
+.main-admin-page-container {
+    display: grid;
+    grid-template: 1fr / auto 1fr;
+    column-gap: 3rem;
+}
+
+.main-admin-page-container .admin-side-bar {
+    background-color: var(--alt-bg-color);
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 5px;
+    position: relative;
+}
+
+.main-admin-page-container .main-admin-side-bar .admin-profile-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--logo-blob);
+    margin-inline: 1rem;
+    padding-bottom: 0.3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.main-admin-page-container
+    .main-admin-side-bar
+    .admin-profile-container
+    .admin-dp {
+    width: 4rem;
+    aspect-ratio: 1;
+    box-shadow: 0 0 5px 1px var(--shadow);
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-inline: auto;
+}
+
+.main-admin-page-container
+    .main-admin-side-bar
+    .admin-profile-container
+    > span {
+    font-size: 0.8rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.main-admin-side-bar {
+    position: absolute;
+    top: 5rem;
+    bottom: 1rem;
+
+    max-width: 17rem;
+    min-width: 13rem;
+    width: 15vw;
+
+    z-index: 99;
+
+    background-color: var(--alt-bg-color);
+    display: flex;
+    flex-direction: column;
+    padding-top: 3rem;
+
+    transform: translateX(calc(-100vw));
+    transition: transform 200ms ease-in-out;
+}
+
+.main-admin-page-container .main-side-bar-open {
+    transform: translateX(0);
+}
+
+.main-admin-side-bar .close-btn {
+    position: absolute;
+    top: 0.8rem;
+    font-size: 1.5rem;
+    right: 1rem;
+
+    transition: background-color 300ms ease;
+    border-radius: 50%;
+    padding: 0.2rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-admin-side-bar .close-btn:hover {
+    background-color: var(--logo-blob);
+}
+
+.admin-options-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1rem;
+    overflow-y: auto;
+    justify-content: flex-start;
+}
+
+.main-side-bar-options-container {
+    justify-content: flex-start;
+    padding-bottom: 2rem;
+}
+
+.admin-hammenu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 200ms ease;
+}
+.admin-hammenu-btn:hover {
+    background-color: var(--logo-blob);
+}
+
+.admin-options-container .active {
+    border-left: 2px solid var(--bg-dark-color) !important;
+    background-color: var(--logo-blob);
+}
+
+.admin-options-container .admin-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.32rem 0.56rem;
+    align-items: center;
+    cursor: pointer;
+
+    border-left: 2px solid transparent;
+    transition: background-color 200ms ease-in-out;
+}
+
+.admin-options-container .admin-link:hover {
+    background-color: var(--bg-color);
+}
+
+.admin-link :nth-child(1) {
+    font-size: 1.3rem;
+}
+.admin-link > span {
+    text-transform: capitalize;
+    font-size: 0.8rem;
+}
+
+.pagination-container .active {
+    background-color: rgb(32, 135, 238);
+}
+
+.pagination-container button {
+    padding: 0.5rem 0.8rem;
+    background-color: var(--alt-bg-color);
+    border: 1px solid var(--logo-blob);
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 0.86rem;
+}
+
+.main-admin-products-container .drop-down {
+    padding: 0.4rem 0.8rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-transform: capitalize;
+    background-color: rgba(145, 145, 145, 0.05);
+    border-radius: 5px;
+    border: 2px solid var(--hover-link-color);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    position: relative;
+}
+
+.main-admin-products-container .drop-down > ul {
+    position: absolute;
+    padding: 0.4rem;
+    top: 2.4rem;
+    left: -0.5rem;
+    background-color: var(--alt-bg-color);
+    width: 120%;
+    border-radius: 3px;
+    transform: scaleY(0);
+    transition: transform 200ms ease;
+    transform-origin: top;
+}
+
+.main-admin-products-container .drop-down > .open-menu {
+    transform: scaleY(1);
+}
+
+.main-admin-products-container .drop-down > ul li {
+    height: max-content;
+}
+.main-admin-products-container .drop-down > ul li button {
+    text-transform: capitalize;
+    width: 100%;
+    padding: 0.2rem;
+    border-radius: 2px;
+
+    transition: background-color 200ms ease-in-out;
+}
+
+.main-admin-products-container .drop-down > ul li button:hover {
+    background-color: var(--hover-link-color);
+}
+
+.main-admin-products-container {
+    display: grid;
+    height: 100%;
+    grid-template: auto 1fr auto / 1fr;
+    grid-template-areas: "nav" "main" "pagination";
+}
+.main-admin-products-container .admin-products-container {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.main-admin-products-container .admin-product-card {
+    display: grid;
+    grid-template: 7fr 3fr / 1fr;
+    box-shadow: 0 0 7px -1px var(--shadow);
+    background-color: var(--extra-light-bg-color);
+    padding-block-end: 0.7rem;
+}
+.main-admin-products-container .admin-product-card .product-img-container {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main-admin-products-container .admin-product-card .product-info-container {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    > span {
+    text-transform: capitalize;
+    opacity: 0.86;
+    font-size: 0.96rem;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .price-container {
+    display: flex;
+    align-items: flex-end;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 500;
+
+    gap: 0.2rem;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .price-container
+    > span:nth-child(2) {
+    text-decoration: line-through;
+    font-size: 0.67rem;
+    font-weight: normal;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .btn-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 0.8rem;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .btn-container
+    button
+    > * {
+    display: inline-block;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .btn-container
+    button:hover {
+    background-color: var(--alt-bg-color);
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .btn-container
+    button {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    gap: 0.14rem;
+    border: 1px solid var(--hover-link-color);
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background-color 200ms ease-in-out;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .btn-container
+    button:nth-child(2) {
+    color: red;
+}
+
+.main-admin-products-container
+    .admin-product-card
+    .product-info-container
+    .btn-container
+    button:nth-child(2)
+    svg {
+    fill: red;
+}
+
+.main-admin-products-container .head-container {
+    grid-area: nav;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-admin-products-container .head-container span {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.8rem;
+    opacity: 0.86;
+    gap: 0.3rem;
+}
+
+.main-admin-products-container .pagination-container {
+    grid-area: pagination;
+    margin-inline-start: auto;
+}
+
+@media screen and (max-width: 450px) {
+    .main-admin-page-container {
+        column-gap: 0rem;
+    }
+}
