@@ -1,0 +1,147 @@
+.main-reply-message-modal {
+    display: none;
+}
+
+.main-reply-message-modal.open-modal {
+    z-index: 9999999999;
+    position: fixed;
+    inset: 0;
+    background-color: var(--shadow);
+
+    display: grid;
+    place-items: center;
+}
+
+.main-reply-message-modal .reply-message-modal-content {
+    background-color: var(--alt-bg-color);
+    border-radius: 5px;
+    width: 60%;
+    margin-inline: auto;
+
+    position: relative;
+}
+
+.main-reply-message-modal .reply-message-modal-content .main-content-container {
+    padding: 1rem;
+}
+
+.main-reply-message-modal .reply-message-modal-content .modal-btn {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    font-size: 1.6rem;
+    opacity: 0.6;
+}
+
+.main-reply-message-modal .reply-message-modal-content .heading {
+    font-size: 1.3rem;
+    font-weight: 500;
+    opacity: 0.7;
+
+    background-color: var(--hover-link-color);
+    display: block;
+    padding: 1rem;
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    .message-card {
+    display: flex;
+    font-size: 0.85rem;
+    flex-direction: column;
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    .message-card
+    .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    .message-card
+    .head
+    .name {
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    .message-card
+    .email {
+    opacity: 0.8;
+    margin-top: 0.2rem;
+    font-weight: 500;
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    .message-card
+    .message {
+    margin-block: 1.4rem;
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    .reply-container
+    textarea {
+    width: 100%;
+    height: 15rem;
+    max-height: 15rem;
+    min-height: 5rem;
+    min-width: 8rem;
+    max-width: 100%;
+
+    border-radius: 5px;
+    background-color: var(--logo-blob);
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    .reply-container
+    .head {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-transform: capitalize;
+    margin-block: 0.8rem;
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    > button {
+    padding: 0.5rem 2rem;
+    border-radius: 2px;
+    background-color: var(--hover-link-color);
+    margin: auto;
+    margin-top: 1.5rem;
+    display: block;
+
+    transition: background-color 200ms ease, padding 200ms ease-in-out;
+}
+
+.main-reply-message-modal
+    .reply-message-modal-content
+    .main-content-container
+    > button:hover {
+    background-color: var(--logo-blob);
+    padding: 0.5rem 2.6rem;
+}
+
+@media screen and (max-width: 800px) {
+    .main-reply-message-modal .reply-message-modal-content {
+        width: 80%;
+    }
+}

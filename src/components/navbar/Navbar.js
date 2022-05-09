@@ -104,7 +104,9 @@ const Navbar = () => {
                     setIsHammenuOpen(true);
                 }}
             />
-            <SiShopify className="logo" />
+            <Link to="/">
+                <SiShopify className="logo" />
+            </Link>
             <div className="links-container">
                 {links.map((link) => {
                     const { text, url, id } = link;
@@ -184,7 +186,7 @@ const Navbar = () => {
                     })
                 ) : (
                     <>
-                        <Link to="/adminPage" className="user_links">
+                        <Link to="/adminPage/dashboard" className="user_links">
                             Admin Page
                         </Link>
 

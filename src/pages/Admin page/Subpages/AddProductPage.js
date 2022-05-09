@@ -157,7 +157,7 @@ const AddProductPage = ({ setAdminReturn }) => {
     return (
         <form className="edit-product-grid" onSubmit={handleAdd}>
             <Link
-                to="/adminPage"
+                to="/adminPage/products"
                 className="blue-link"
                 onClick={() => setAdminReturn(true)}>
                 <IoMdArrowDropleft />

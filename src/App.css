@@ -27,12 +27,12 @@ html {
     font-size: 0.9rem;
     line-height: 1.6;
 }
-.Toastify__toast-body {
+/* .Toastify__toast-body {
     width: min(95%, max-content);
     margin: auto !important;
     justify-content: center;
     flex: none !important;
-}
+} */
 
 *,
 *::after,
@@ -103,6 +103,7 @@ body {
     background-color: var(--bg-color);
     overflow-x: hidden;
     transition: background-color 200ms ease;
+    padding-bottom: 3rem;
 }
 .blue-link {
     color: #63add8;
@@ -984,7 +985,31 @@ nav {
     justify-content: center;
     align-items: center;
 
+    position: relative;
     font-size: 1.3rem;
+}
+
+.single-product-info-container .product-edit-btn {
+    position: absolute;
+    top: -0.5rem;
+    right: -1rem;
+    padding: 0.4rem 1.3rem;
+    border-radius: 5px;
+
+    background-color: var(--logo-blob);
+    text-transform: capitalize;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 0.5rem;
+    font-size: 1rem;
+
+    transition: background-color 200ms ease-in-out;
+}
+.single-product-info-container .product-edit-btn:hover {
+    background-color: var(--hover-link-color);
 }
 
 .single-product-info-container .product-img {
@@ -2371,6 +2396,49 @@ nav {
     padding: 0.9rem 2rem;
 }
 
+.content-table .orders-actions-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 0.8rem;
+}
+
+.content-table .orders-actions-container button {
+    padding: 0.34rem;
+    font-size: 1rem;
+    background: var(--alt-bg-color);
+    border-radius: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 200ms ease;
+}
+
+.content-table .orders-actions-container button:nth-child(2) svg path {
+    stroke: red;
+}
+
+.content-table .orders-actions-container button:hover {
+    background-color: var(--hover-link-color);
+}
+
+.content-table td .value-container {
+    display: flex;
+    align-items: center;
+    color: var(--fill-color, red);
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.content-table td .value-container svg {
+    fill: var(--fill-color, red);
+    stroke: var(--fill-color, red);
+    font-size: 1.1rem;
+}
+
 .content-table tbody tr {
     border-bottom: 1px solid rgba(155, 155, 155, 0.6);
 }
@@ -2587,9 +2655,6 @@ nav {
     }
 }
 
-.main-orders-info-container {
-    grid-template: 0.4fr / 1fr;
-}
 .no-scroll {
-    overflow: hidden;
+    overflow: hidden !important;
 }

@@ -1,0 +1,126 @@
+.main-messages-container {
+    padding: 1rem;
+    background-color: var(--extra-light-bg-color);
+}
+
+.main-messages-container .messages-container .no-messages {
+    width: 100%;
+    padding-block: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    opacity: 0.7;
+    text-transform: capitalize;
+}
+
+.main-messages-container {
+    display: flex;
+    flex-direction: column;
+}
+.main-messages-container .heading {
+    font-weight: 500;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    text-transform: capitalize;
+    padding-bottom: 0.4rem;
+
+    margin-bottom: 1.3rem;
+
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.messages-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.messages-container > * {
+    flex-grow: 1;
+}
+
+.messages-container .message-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    padding: 1rem;
+    position: relative;
+
+    background-color: var(--alt-bg-color);
+}
+.messages-container .message-card .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.messages-container .message-card .head .name {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.messages-container .message-card .head .date {
+    font-size: 0.67rem;
+    opacity: 0.5;
+    font-weight: 500;
+}
+
+.messages-container .message-card .email {
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+.messages-container .message-card .message {
+    margin-block: 1rem;
+    font-size: 0.87rem;
+}
+
+.messages-container .message-card .actions {
+    display: flex;
+    justify-content: center;
+    padding: 0 0.4rem;
+    gap: 10%;
+    margin-top: auto;
+}
+
+.messages-container .message-card .actions .btn {
+    padding: 0.3rem 1rem;
+    background-color: var(--logo-blob);
+    border-radius: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.messages-container .message-card .actions .replied {
+    position: absolute;
+    top: -0.1rem;
+    right: -0.1rem;
+
+    background-color: #008700;
+    height: 0.5rem;
+    box-shadow: 0 0 10px -0.5px limegreen;
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+    text-transform: capitalize;
+}
+
+.messages-container .message-card .actions .btn span {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    margin-right: 0.5rem;
+}
+
+.messages-container .message-card .actions .btn .icon {
+    fill: var(--fill-color, red);
+    transition: transform 200ms ease;
+}
+
+.messages-container .message-card .actions .btn:hover .icon {
+    transform: scale(1.1) translateX(4px);
+}

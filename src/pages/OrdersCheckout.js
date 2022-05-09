@@ -15,6 +15,7 @@ const OrdersCheckout = () => {
         cartList,
         auth,
         itemCount,
+        setProgress,
     } = useGlobalContext();
     const navigate = useNavigate();
 
@@ -150,7 +151,7 @@ const OrdersCheckout = () => {
         }
 
         if (!(out_arr.length > 0)) {
-            setLoading(true);
+            setProgress(30);
             const response = await fetch(
                 "http://localhost:5000/orders/addorder",
                 {
@@ -178,7 +179,7 @@ const OrdersCheckout = () => {
             );
 
             const json = await response.json();
-            setLoading(false);
+            setProgress(100);
 
             if (json.success) {
                 return dispatchAlert("success", "order placed successfully...");

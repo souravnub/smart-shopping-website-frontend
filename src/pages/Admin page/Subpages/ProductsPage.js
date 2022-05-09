@@ -6,9 +6,11 @@ import "../Admin page.css";
 import { MdEdit, MdDeleteForever } from "react-icons/md";
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
 import Spinner from "../../../components/Spinner";
+import AdminSidebar from "../../../components/admin/AdminSidebar";
+import PageNotFound from "../../PageNotFound/PageNotFound";
 
 const ProductsPage = () => {
-    const { dispatchAlert, productsList, auth } = useGlobalContext();
+    const { dispatchAlert, productsList, auth, isAdmin } = useGlobalContext();
     const navigate = useNavigate();
 
     const [products, setProducts] = useState([]);
@@ -106,89 +108,110 @@ const ProductsPage = () => {
         getData();
     }, [currentCategory]);
 
-    if (loading) {
-        return (
-            <Spinner
-                size="1.9rem"
-                fontSize=".9rem"
-                text="fetching products...."
-            />
-        );
+    if (!isAdmin) {
+        return <PageNotFound />;
     }
 
     return (
-        <div className="main-admin-products-container">
-            <div className="head-container">
-                <span>
-                    No. of Products <IoMdArrowDropright /> {products.length}
-                </span>
-                <div
-                    role="button"
-                    aria-pressed="false"
-                    tabIndex="0"
-                    className="drop-down"
-                    onClick={() => setIsMenuOpen((prev) => !prev)}
-                    onKeyDown={handleMenuToggle}>
-                    <span>{currentCategory}</span>
-                    <IoMdArrowDropdown />
-                    <ul className={`${isMenuOpen && "open-menu"}`}>
-                        {categories.map((category) => (
-                            <li key={category}>
-                                <button
-                                    className={`drop-down-option ${
-                                        currentCategory === category && "active"
-                                    }`}
-                                    onClick={() =>
-                                        setCurrentCategory(category)
-                                    }>
-                                    <span>{category}</span>
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
+        <div className="main-admin-page-container">
+            <AdminSidebar />
 
-            <div className="admin-products-container">
-                {currentProducts.map((product) => {
-                    const { name, price, actualPrice, image_url, _id } =
-                        product;
-                    return (
-                        <div className="admin-product-card" key={_id}>
+            {loading ? (
+                <Spinner
+                    size="1.9rem"
+                    fontSize=".9rem"
+                    text="fetching products...."
+                />
+            ) : (
+                <div className="data-container">
+                    <div className="main-admin-products-container">
+                        <div className="head-container">
+                            <span>
+                                No. of Products <IoMdArrowDropright />{" "}
+                                {products.length}
+                            </span>
                             <div
-                                className="product-img-container"
-                                style={{
-                                    backgroundImage: `url(${image_url})`,
-                                }}></div>
-                            <div className="product-info-container">
-                                <span>{name}</span>
-                                <div className="price-container">
-                                    <span>${price}</span>
-                                    <span>${actualPrice}</span>
-                                </div>
-                                <div className="btn-container">
-                                    <button
-                                        onClick={() =>
-                                            navigate(`/editproduct/${_id}`)
-                                        }>
-                                        <MdEdit /> Edit
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(_id, name)}>
-                                        <MdDeleteForever /> delete
-                                    </button>
-                                </div>
+                                role="button"
+                                aria-pressed="false"
+                                tabIndex="0"
+                                className="drop-down"
+                                onClick={() => setIsMenuOpen((prev) => !prev)}
+                                onKeyDown={handleMenuToggle}>
+                                <span>{currentCategory}</span>
+                                <IoMdArrowDropdown />
+                                <ul className={`${isMenuOpen && "open-menu"}`}>
+                                    {categories.map((category) => (
+                                        <li key={category}>
+                                            <button
+                                                className={`drop-down-option ${
+                                                    currentCategory ===
+                                                        category && "active"
+                                                }`}
+                                                onClick={() =>
+                                                    setCurrentCategory(category)
+                                                }>
+                                                <span>{category}</span>
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
-                    );
-                })}
-            </div>
 
-            <Pagination
-                currentPage={currentPage}
-                pages={pages}
-                setCurrentPage={setCurrentPage}
-            />
+                        <div className="admin-products-container">
+                            {currentProducts.map((product) => {
+                                const {
+                                    name,
+                                    price,
+                                    actualPrice,
+                                    image_url,
+                                    _id,
+                                } = product;
+                                return (
+                                    <div
+                                        className="admin-product-card"
+                                        key={_id}>
+                                        <div
+                                            className="product-img-container"
+                                            style={{
+                                                backgroundImage: `url(${image_url})`,
+                                            }}></div>
+                                        <div className="product-info-container">
+                                            <span>{name}</span>
+                                            <div className="price-container">
+                                                <span>${price}</span>
+                                                <span>${actualPrice}</span>
+                                            </div>
+                                            <div className="btn-container">
+                                                <button
+                                                    onClick={() =>
+                                                        navigate(
+                                                            `/editproduct/${_id}`
+                                                        )
+                                                    }>
+                                                    <MdEdit /> Edit
+                                                </button>
+                                                <button
+                                                    onClick={() =>
+                                                        handleDelete(_id, name)
+                                                    }>
+                                                    <MdDeleteForever /> delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+
+                        <Pagination
+                            currentPage={currentPage}
+                            pages={pages}
+                            setCurrentPage={setCurrentPage}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

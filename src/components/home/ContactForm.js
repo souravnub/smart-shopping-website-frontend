@@ -23,20 +23,17 @@ const ContactForm = () => {
 
         if (message.length > 20) {
             setMessageLoading(true);
-            const response = await fetch(
-                "http://localhost:5000/api/messages/",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        user: name,
-                        email: email,
-                        message: message,
-                    }),
-                }
-            );
+            const response = await fetch("http://localhost:5000/messages/add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    user: name,
+                    email: email,
+                    message: message,
+                }),
+            });
             const json = await response.json();
             setMessageLoading(false);
 

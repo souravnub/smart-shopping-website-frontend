@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Loading from "../../components/Loading";
 import { useGlobalContext } from "../../context";
 import { Link } from "react-router-dom";
 import { MdArrowLeft, MdArrowRight } from "react-icons/md";
 import Spinner from "../Spinner";
+import { MdOutlineLocalShipping, MdOpenWith } from "react-icons/md";
+import {
+    BsExclamationCircle,
+    BsCheckCircle,
+    BsClockHistory,
+} from "react-icons/bs";
+import "../OrderInfoModal/orderInfoModal.css";
 
 const OrdersDetails = () => {
     const { genDate } = useGlobalContext();
@@ -35,8 +41,8 @@ const OrdersDetails = () => {
                     name,
                     price: `$${price}`,
                     quantity,
+                    status: order_obj.order_status,
                     "ordered at": genDate(order.createdAt),
-                    Status: order.order_status,
                     "Sub Total": ` $${order_obj.price * order_obj.quantity}`,
                 };
                 main_l.push(order_ele);
@@ -80,7 +86,58 @@ const OrdersDetails = () => {
                     return (
                         <tr key={idx}>
                             {values.map((value, idx) => {
-                                return <td key={idx}>{value}</td>;
+                                return (
+                                    <td key={idx}>
+                                        {value === "pending" ? (
+                                            <div
+                                                className="value-container"
+                                                style={{
+                                                    "--fill-color": "#5e5eff",
+                                                }}>
+                                                <BsClockHistory />
+                                                Pending
+                                            </div>
+                                        ) : value === "declined" ? (
+                                            <div
+                                                className="value-container"
+                                                style={{
+                                                    "--fill-color": "#f36741",
+                                                }}>
+                                                <BsExclamationCircle />
+                                                declined
+                                            </div>
+                                        ) : value === "shipped" ? (
+                                            <div
+                                                className="value-container"
+                                                style={{
+                                                    "--fill-color": "#327532",
+                                                }}>
+                                                <MdOutlineLocalShipping />
+                                                Shipped
+                                            </div>
+                                        ) : value === "delivered" ? (
+                                            <div
+                                                className="value-container"
+                                                style={{
+                                                    "--fill-color": "#00ad00",
+                                                }}>
+                                                <BsCheckCircle />
+                                                Delivered
+                                            </div>
+                                        ) : value === "dispatched" ? (
+                                            <div
+                                                className="value-container"
+                                                style={{
+                                                    "--fill-color": "#c0a01d",
+                                                }}>
+                                                <MdOpenWith />
+                                                Dispatched
+                                            </div>
+                                        ) : (
+                                            value
+                                        )}
+                                    </td>
+                                );
                             })}
                         </tr>
                     );

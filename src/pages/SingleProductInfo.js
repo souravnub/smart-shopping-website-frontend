@@ -5,12 +5,20 @@ import StarRatings from "react-star-ratings";
 import Carousel from "react-material-ui-carousel";
 import AddComment from "../components/Products/AddComment";
 import { FiCheckCircle } from "react-icons/fi";
+import { MdEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const SingleProduct = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { productsList, dispatchAlert, setCartList, theme, genDate } =
-        useGlobalContext();
+    const {
+        productsList,
+        dispatchAlert,
+        setCartList,
+        theme,
+        genDate,
+        isAdmin,
+    } = useGlobalContext();
 
     const [currentProduct, setCurrentProduct] = useState({});
 
@@ -68,6 +76,14 @@ const SingleProduct = () => {
         <div className="single-product-container">
             <h1>{name}</h1>
             <div className="single-product-info-container">
+                {isAdmin && (
+                    <Link
+                        to={`/editproduct/${_id}`}
+                        className="product-edit-btn">
+                        <MdEdit />
+                        edit
+                    </Link>
+                )}
                 <div
                     className="product-img"
                     style={{

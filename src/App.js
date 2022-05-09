@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import Orders from "./pages/Orders";
 import MyAccount from "./pages/account page/MyAccount";
 import SingleProductInfo from "./pages/SingleProductInfo";
 import Home from "./components/home/Home";
@@ -24,10 +23,24 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import EditProductPage from "./pages/admin edit product page/EditProductPage";
 import AddProductPage from "./pages/Admin page/Subpages/AddProductPage";
 import ChangeDetails from "./components/account/ChangeDetails";
+import ProductsPage from "./pages/Admin page/Subpages/ProductsPage";
+import Users from "./pages/Admin page/Subpages/Users";
+import OrdersPage from "./pages/Admin page/Subpages/OrdersPage";
+import MessagesPage from "./pages/Admin page/Subpages/messages page/MessagesPage";
+import NewsletterPage from "./pages/Admin page/Subpages/news letter page/NewsletterPage";
+import MessageModal from "./components/Reply Message modal/MessageModal";
+import LoadingBar from "react-top-loading-bar";
 
 function App() {
-    const { isCartOpen, isHammenuOpen, adminReturn, setAdminReturn } =
-        useGlobalContext();
+    const {
+        isCartOpen,
+        isHammenuOpen,
+        adminReturn,
+        setAdminReturn,
+        ReplyMessageModal,
+        progress,
+        setProgress,
+    } = useGlobalContext();
 
     if (isCartOpen || isHammenuOpen) {
         document.body.style.overflow = "hidden";
@@ -39,6 +52,13 @@ function App() {
         <>
             <HammenuContainer />
             <div className="container">
+                <LoadingBar
+                    color="#f11946"
+                    height={4}
+                    progress={progress}
+                    onLoaderFinished={() => setProgress(0)}
+                />
+                <MessageModal showModal={ReplyMessageModal.show} />
                 <Navbar />
                 <Cart />
 
@@ -73,21 +93,35 @@ function App() {
 
                     <Route path="/login" element={<Login />}></Route>
                     <Route path="/signup" element={<SignUp />}></Route>
-                    <Route path="/orders" element={<Orders />}></Route>
                     <Route path="/account" element={<MyAccount />}></Route>
                     <Route
                         path="/updateinfo"
                         element={<ChangeDetails />}></Route>
+
                     <Route
-                        path="/addproduct"
-                        element={
-                            <AddProductPage setAdminReturn={setAdminReturn} />
-                        }></Route>
+                        path="/adminPage/products"
+                        element={<ProductsPage />}
+                    />
+                    <Route path="/adminPage/users" element={<Users />} />
+                    <Route path="/adminPage/orders" element={<OrdersPage />} />
                     <Route
-                        path="/adminPage"
-                        element={
-                            <AdminPage adminReturn={adminReturn} />
-                        }></Route>
+                        path="/adminPage/newsletter"
+                        element={<NewsletterPage />}
+                    />
+                    <Route
+                        path="/adminPage/messages"
+                        element={<MessagesPage />}
+                    />
+                    <Route
+                        path="/adminPage/addproduct"
+                        element={<AddProductPage />}
+                    />
+
+                    <Route
+                        path="/adminPage/dashboard"
+                        element={<AdminPage adminReturn={adminReturn} />}
+                    />
+
                     <Route
                         path="/editproduct/:id"
                         element={

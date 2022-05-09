@@ -361,6 +361,6 @@
 
 @media screen and (max-width: 450px) {
     .main-admin-page-container {
-        column-gap: 0rem;
+        column-gap: 0.5rem;
     }
 }

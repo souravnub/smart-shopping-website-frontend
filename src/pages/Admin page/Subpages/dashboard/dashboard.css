@@ -12,10 +12,33 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-    background-color: rgb(69, 212, 136);
+    background-color: #f47857;
 
     border-radius: 2px;
-    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.main-dashboard-container {
+    display: grid;
+    gap: 1rem;
+
+    grid-template: auto 23rem auto / 7fr 3fr;
+    grid-template-areas:
+        "cards cards"
+        "graph orders"
+        "messages messages";
+}
+
+.main-dashboard-container .cards-container {
+    grid-area: cards;
+}
+.main-dashboard-container .top-selling-products-container {
+    grid-area: orders;
+}
+.main-dashboard-container .graph-container {
+    grid-area: graph;
+}
+.main-dashboard-container .main-messages-container {
+    grid-area: messages;
 }
 
 .main-dashboard-container .sep {
@@ -28,7 +51,7 @@ progress[value]::-webkit-progress-value {
 .main-dashboard-container .cards-container {
     display: flex;
     max-width: 100%;
-    overflow: auto;
+    overflow-x: auto;
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -96,7 +119,6 @@ progress[value]::-webkit-progress-value {
     border-radius: 1px;
     box-shadow: 0 0 5px 1px var(--shadow);
     background-color: var(--bg-color);
-    padding-inline: 0.4rem;
 
     transform: translateX(-50%);
     z-index: 9;
@@ -120,8 +142,44 @@ progress[value]::-webkit-progress-value {
 .main-dashboard-container .cards-container .card .progress-bar-container span {
     font-weight: 500;
     font-size: 0.8rem;
-    margin-top: 0.3rem;
+    margin-top: 0.6rem;
     text-transform: capitalize;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-dashboard-container
+    .cards-container
+    .card
+    .progress-bar-container
+    span
+    a {
+    display: flex;
+    align-items: center;
+    background-color: var(--hover-link-color);
+    padding: 0.4rem 0.5rem;
+}
+
+.main-dashboard-container
+    .cards-container
+    .card
+    .progress-bar-container
+    span
+    a
+    > svg {
+    transition: transform 200ms ease;
+}
+
+.main-dashboard-container
+    .cards-container
+    .card
+    .progress-bar-container
+    span
+    a:hover
+    > svg {
+    transform: scale(1.2);
 }
 
 .main-dashboard-container
@@ -130,22 +188,6 @@ progress[value]::-webkit-progress-value {
     .progress-bar-container
     progress {
     width: 100%;
-}
-
-.main-dashboard-container .cards-container .card .updation-info {
-    display: flex;
-    align-items: center;
-
-    opacity: 0.4;
-    font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-    text-transform: capitalize;
-    margin-top: 0.6rem;
-}
-.main-dashboard-container .cards-container .card .updation-info .update-icon {
-    font-size: 1rem;
-    display: inline-block;
-    margin-right: 0.4rem;
 }
 
 .main-dashboard-container .cards-container .card .action {
@@ -168,4 +210,230 @@ progress[value]::-webkit-progress-value {
     fill: var(--fill-color, var(--text-color));
     font-size: 1rem;
     margin-right: 0.4rem;
+}
+
+/* news orders container */
+
+.top-selling-products-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--extra-light-bg-color);
+    padding: 1rem 0.6rem;
+}
+
+.top-selling-products-container .head {
+    font-weight: 500;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    text-transform: capitalize;
+    padding-bottom: 0.4rem;
+
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.top-selling-products-container .top-selling-products-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    overflow-y: auto;
+}
+
+.top-selling-products-container .top-selling-products-container .card {
+    display: flex;
+    font-size: 0.9rem;
+    gap: 1rem;
+    padding-right: 0.5rem;
+    align-items: center;
+}
+
+.top-selling-products-container
+    .top-selling-products-container
+    .card
+    .product-image {
+    width: 60px;
+    min-width: 60px;
+    height: 50px;
+    border-radius: 4px;
+    background-color: var(--hover-link-color);
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.top-selling-products-container .top-selling-products-container .card .name {
+    margin-right: auto;
+    text-transform: capitalize;
+}
+.top-selling-products-container .top-selling-products-container .card .price {
+    font-weight: 500;
+}
+
+/* graph container */
+
+.main-dashboard-container .graph-container {
+    background-color: var(--extra-light-bg-color);
+}
+
+/* messages container */
+
+.main-dashboard-container .main-messages-container {
+    padding: 1rem;
+    background-color: var(--extra-light-bg-color);
+}
+
+.main-dashboard-container
+    .main-messages-container
+    .messages-container
+    .no-messages {
+    width: 100%;
+    padding-block: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    opacity: 0.7;
+    text-transform: capitalize;
+}
+
+.main-dashboard-container .main-messages-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    overflow-x: auto;
+}
+.main-dashboard-container .main-messages-container .heading {
+    font-weight: 500;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    text-transform: capitalize;
+    padding-bottom: 0.4rem;
+
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.main-dashboard-container .messages-container {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+
+    gap: 1rem;
+
+    width: 100%;
+    overflow-x: auto;
+
+    scroll-snap-type: mandatory;
+    scroll-snap-type: x mandatory;
+
+    padding-block: 1rem;
+}
+
+.main-dashboard-container .messages-container .message-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    height: 100%;
+
+    padding: 1rem;
+
+    scroll-snap-align: start;
+
+    background-color: var(--alt-bg-color);
+    max-width: 20rem;
+}
+.main-dashboard-container .messages-container .message-card .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-dashboard-container .messages-container .message-card .head .name {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.main-dashboard-container .messages-container .message-card .head .date {
+    font-size: 0.67rem;
+    opacity: 0.5;
+    font-weight: 500;
+}
+
+.main-dashboard-container .messages-container .message-card .email {
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+.main-dashboard-container .messages-container .message-card .message {
+    margin-block: 0.78rem;
+    font-size: 0.87rem;
+}
+
+.main-dashboard-container .messages-container .message-card .actions {
+    display: flex;
+    justify-content: center;
+    padding: 0 0.4rem;
+    gap: 20%;
+    margin-top: auto;
+}
+
+.main-dashboard-container .messages-container .message-card .actions .btn {
+    padding: 0.3rem 1rem;
+    background-color: var(--logo-blob);
+    border-radius: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-dashboard-container .messages-container .message-card .actions .btn span {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    margin-right: 0.5rem;
+}
+
+.main-dashboard-container
+    .messages-container
+    .message-card
+    .actions
+    .btn
+    .icon {
+    fill: var(--fill-color, red);
+    transition: transform 200ms ease;
+}
+
+.main-dashboard-container
+    .messages-container
+    .message-card
+    .actions
+    .btn:hover
+    .icon {
+    transform: scale(1.1) translateX(4px);
+}
+
+@media screen and (max-width: 1500px) {
+    .main-dashboard-container {
+        display: grid;
+        grid-template: auto auto 20rem / 7fr 3fr;
+        grid-template-areas:
+            "cards cards"
+            "graph graph"
+            "messages orders";
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main-dashboard-container {
+        grid-template: auto 23rem auto auto / 7fr 3fr;
+        grid-template-areas:
+            "cards cards"
+            "orders orders"
+            "graph graph"
+            "messages messages";
+    }
 }

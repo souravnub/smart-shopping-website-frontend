@@ -86,7 +86,7 @@ const EditProductPage = ({ setAdminReturn }) => {
             );
         }
 
-        if (otherCategories.includes(category.toLowerCase().trim()())) {
+        if (otherCategories.includes(category.toLowerCase().trim())) {
             return dispatchAlert("error", "category already present");
         }
 
@@ -108,7 +108,7 @@ const EditProductPage = ({ setAdminReturn }) => {
                 "input value for a feature cannot be empty"
             );
         }
-        if (productFeatures.includes(feature.toLowerCase().trim()())) {
+        if (productFeatures.includes(feature.toLowerCase().trim())) {
             return dispatchAlert("error", "feature already present");
         }
         setProductFeatures((prev) => [...prev, feature]);
@@ -141,6 +141,9 @@ const EditProductPage = ({ setAdminReturn }) => {
     }
 
     useEffect(() => {
+        if (!isAdmin) {
+            return <PageNotFound />;
+        }
         getProduct();
     }, []);
 
@@ -274,18 +277,22 @@ const EditProductPage = ({ setAdminReturn }) => {
         );
     }
 
-    if (!isAdmin) {
-        return <PageNotFound />;
-    }
-
     return (
         <div className="edit-product-grid">
             <Link
-                to="/adminPage"
+                to="/adminPage/products"
                 className="blue-link"
                 onClick={() => setAdminReturn(true)}>
                 <IoMdArrowDropleft />
                 back to products page
+            </Link>
+            <Link
+                to="/adminPage/dashboard"
+                className="blue-link"
+                onClick={() => setAdminReturn(true)}
+                style={{ top: "1rem" }}>
+                <IoMdArrowDropleft />
+                back to dashboard
             </Link>
             <div
                 className="img-container"

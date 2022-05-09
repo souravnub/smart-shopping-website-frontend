@@ -9,6 +9,9 @@ import pincodes from "../../data/Pincodes";
 const ChangeDetails = () => {
     const { dispatchAlert, auth } = useGlobalContext();
     const [isHolder, setIsHolder] = useState(false);
+
+    // prevDetails had been created so as to keep track of the previous details of the user .... if user had not made any change in the data then we will not send the post req to the backend
+    const [prevDetails, setPrevDetails] = useState({});
     const [user, setUser] = useState({
         location_info: {
             state: "",
@@ -68,6 +71,15 @@ const ChangeDetails = () => {
             const { _id, email, user, user_img, phone, location_info } =
                 json.user;
             setIsHolder(json.user["news letter holder"]);
+            setPrevDetails({
+                _id,
+                email,
+                user,
+                user_img,
+                phone,
+                location_info,
+                "news letter holder": json.user["news letter holder"],
+            });
             return setUser({
                 _id,
                 email,
@@ -83,8 +95,17 @@ const ChangeDetails = () => {
 
     const handleChangeData = async (e) => {
         e.preventDefault();
-        setUserLoading(true);
 
+        //  the below comparison method will not work for :     x = {a: 1, b: 2};
+        //                                                      y = { b: 2, a: 1 };
+
+        if (JSON.stringify(user) === JSON.stringify(prevDetails)) {
+            return dispatchAlert(
+                "warning",
+                "some change should be made before upadting data..."
+            );
+        }
+        setUserLoading(true);
         const response = await fetch(
             `http://localhost:5000/api/auth/updateuser/${user._id}`,
             {

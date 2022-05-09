@@ -23,10 +23,6 @@ export const links = [
 
 export const user_options = [
     {
-        text: "Orders",
-        url: "/orders",
-    },
-    {
         text: "My Account",
         url: "/account",
     },

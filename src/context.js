@@ -3,6 +3,9 @@ import { toast } from "react-toastify";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
+    // for the top loading bar
+    const [progress, setProgress] = useState(0);
+
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") || "light"
     );
@@ -21,9 +24,25 @@ const AppProvider = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [adminLoading, setAdminLoading] = useState(true);
 
+    // repliedaMessage state had been made so as to check whether admin had replied a message.... if he had just replied a message then we need to fetch the data again at dashboard so as to set the pending (non-replied) messsages....
+    const [repliedaMessage, setRepliedaMessage] = useState(0);
+    const [ReplyMessageModal, setReplyMessageModal] = useState({
+        show: false,
+        message_info: {},
+    });
+
+    // edittedOrder state is made so as to check whether admin had editted an order.... if he had then we will change this state and will fetch orders data again..
+    const [deletedOrder, setDeletedOrder] = useState(0);
+    const [edittedOrder, setEdittedOrder] = useState(0);
+    const [orderInfoModal, setOrderInfoModal] = useState({
+        show: false,
+        order_info: {},
+    });
+
     const [auth, setAuth] = useState(
         localStorage.getItem("ShopAuthtoken") || null
     );
+    const [user, setUser] = useState({});
 
     const [likedProductsList, setLikedProductsList] = useState(
         localStorage.getItem("likedProductsList")
@@ -56,6 +75,7 @@ const AppProvider = ({ children }) => {
         const json = await response.json();
 
         if (json.success) {
+            setUser(json.user);
             if (json.user["news letter holder"]) {
                 setNewsLetterHolder(true);
             }
@@ -265,6 +285,8 @@ const AppProvider = ({ children }) => {
                 itemCount,
                 auth,
                 setAuth,
+                user,
+                setUser,
                 genDate,
                 isAdmin,
                 adminLoading,
@@ -272,6 +294,18 @@ const AppProvider = ({ children }) => {
                 adminReturn,
                 setAdminReturn,
                 newsLetterHolder,
+                ReplyMessageModal,
+                setReplyMessageModal,
+                repliedaMessage,
+                setRepliedaMessage,
+                progress,
+                setProgress,
+                orderInfoModal,
+                setOrderInfoModal,
+                edittedOrder,
+                setEdittedOrder,
+                deletedOrder,
+                setDeletedOrder,
             }}>
             {children}
         </AppContext.Provider>
