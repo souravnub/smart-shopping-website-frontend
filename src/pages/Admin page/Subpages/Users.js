@@ -126,141 +126,134 @@ const Users = () => {
             ) : (
                 <div className="data-container">
                     {users.length !== 0 ? (
-                        <div style={{ overflowX: "auto", maxWidth: "80vw" }}>
-                            <table className="content-table">
-                                <thead>
-                                    <tr>
-                                        {headers.map((header) => {
-                                            return (
-                                                <th key={header}>{header}</th>
-                                            );
-                                        })}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {users.map((user) => {
-                                        let u = [];
-                                        headers.forEach((header) => {
-                                            u.push(user[header]);
-                                        });
+                        <table className="content-table">
+                            <thead>
+                                <tr>
+                                    {headers.map((header) => {
+                                        return <th key={header}>{header}</th>;
+                                    })}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {users.map((user) => {
+                                    let u = [];
+                                    headers.forEach((header) => {
+                                        u.push(user[header]);
+                                    });
 
-                                        return (
-                                            <tr key={user._id}>
-                                                {u.map((value, idx) => {
-                                                    return (
-                                                        <td
-                                                            key={idx}
-                                                            style={{
-                                                                textTransform: `${
-                                                                    idx === 5
-                                                                        ? "none"
-                                                                        : "capitalize"
-                                                                }`,
-                                                            }}>
-                                                            {value === true ? (
-                                                                <span
-                                                                    style={{
-                                                                        display:
-                                                                            "block",
-                                                                        width: "10px",
-                                                                        borderRadius:
-                                                                            "50%",
-                                                                        aspectRatio:
-                                                                            "1",
-                                                                        marginInline:
-                                                                            "auto",
-                                                                        backgroundColor:
-                                                                            "#94ff94",
-                                                                    }}></span>
-                                                            ) : value ===
-                                                              false ? (
-                                                                <span
-                                                                    style={{
-                                                                        display:
-                                                                            "block",
-                                                                        width: "10px",
-                                                                        borderRadius:
-                                                                            "50%",
-                                                                        aspectRatio:
-                                                                            "1",
-                                                                        marginInline:
-                                                                            "auto",
-                                                                        backgroundColor:
-                                                                            "#ff6161",
-                                                                    }}></span>
-                                                            ) : idx === 0 ? (
-                                                                <div
-                                                                    style={{
-                                                                        backgroundImage: `url(${value})`,
-                                                                        backgroundPosition:
-                                                                            "center center",
-                                                                        backgroundSize:
-                                                                            "cover",
-                                                                        backgroundRepeat:
-                                                                            "no-repeat",
-                                                                        width: "2.34rem",
-                                                                        aspectRatio:
-                                                                            "1",
-                                                                        borderRadius:
-                                                                            "50%",
-                                                                        marginInline:
-                                                                            "auto",
-                                                                    }}></div>
-                                                            ) : idx === 7 ||
-                                                              idx === 8 ? (
-                                                                genDate(value)
-                                                            ) : idx === 9 ? (
-                                                                <div className="users-options-container">
-                                                                    {userDeleteLoading ? (
-                                                                        <Spinner size="1rem" />
-                                                                    ) : (
-                                                                        <>
-                                                                            {!user.is_admin && (
-                                                                                <button
-                                                                                    onClick={() =>
-                                                                                        handlePromoteUser(
-                                                                                            user._id
-                                                                                        )
-                                                                                    }>
-                                                                                    <FaUserShield
-                                                                                        style={{
-                                                                                            fill: "#00c700",
-                                                                                        }}
-                                                                                    />
-                                                                                </button>
-                                                                            )}
+                                    return (
+                                        <tr key={user._id}>
+                                            {u.map((value, idx) => {
+                                                return (
+                                                    <td
+                                                        key={idx}
+                                                        style={{
+                                                            textTransform: `${
+                                                                idx === 5
+                                                                    ? "none"
+                                                                    : "capitalize"
+                                                            }`,
+                                                        }}>
+                                                        {value === true ? (
+                                                            <span
+                                                                style={{
+                                                                    display:
+                                                                        "block",
+                                                                    width: "10px",
+                                                                    height: "10px",
+                                                                    borderRadius:
+                                                                        "50%",
 
+                                                                    marginInline:
+                                                                        "auto",
+                                                                    backgroundColor:
+                                                                        "#94ff94",
+                                                                }}></span>
+                                                        ) : value === false ? (
+                                                            <span
+                                                                style={{
+                                                                    display:
+                                                                        "block",
+                                                                    width: "10px",
+                                                                    height: "10px",
+                                                                    borderRadius:
+                                                                        "50%",
+                                                                    marginInline:
+                                                                        "auto",
+                                                                    backgroundColor:
+                                                                        "#ff6161",
+                                                                }}></span>
+                                                        ) : idx === 0 ? (
+                                                            <div
+                                                                style={{
+                                                                    backgroundImage: `url(${value})`,
+                                                                    backgroundPosition:
+                                                                        "center center",
+                                                                    backgroundSize:
+                                                                        "cover",
+                                                                    backgroundRepeat:
+                                                                        "no-repeat",
+                                                                    width: "2.34rem",
+                                                                    height: "2.34rem",
+                                                                    borderRadius:
+                                                                        "50%",
+                                                                    marginInline:
+                                                                        "auto",
+                                                                }}></div>
+                                                        ) : idx === 7 ||
+                                                          idx === 8 ? (
+                                                            genDate(value)
+                                                        ) : idx === 9 ? (
+                                                            <div className="users-options-container">
+                                                                {userDeleteLoading ? (
+                                                                    <Spinner size="1rem" />
+                                                                ) : (
+                                                                    <>
+                                                                        {!user.is_admin && (
                                                                             <button
-                                                                                style={{
-                                                                                    marginLeft:
-                                                                                        "auto",
-                                                                                }}
                                                                                 onClick={() =>
-                                                                                    handleUserDelete(
+                                                                                    handlePromoteUser(
                                                                                         user._id
                                                                                     )
                                                                                 }>
-                                                                                <FaTrashAlt
+                                                                                <FaUserShield
                                                                                     style={{
-                                                                                        fill: "#dc4b4b",
+                                                                                        fill: "#00c700",
                                                                                     }}
                                                                                 />
                                                                             </button>
-                                                                        </>
-                                                                    )}
-                                                                </div>
-                                                            ) : (
-                                                                value
-                                                            )}
-                                                        </td>
-                                                    );
-                                                })}
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
-                        </div>
+                                                                        )}
+
+                                                                        <button
+                                                                            style={{
+                                                                                marginLeft:
+                                                                                    "auto",
+                                                                            }}
+                                                                            onClick={() =>
+                                                                                handleUserDelete(
+                                                                                    user._id
+                                                                                )
+                                                                            }>
+                                                                            <FaTrashAlt
+                                                                                style={{
+                                                                                    fill: "#dc4b4b",
+                                                                                }}
+                                                                            />
+                                                                        </button>
+                                                                    </>
+                                                                )}
+                                                            </div>
+                                                        ) : (
+                                                            value
+                                                        )}
+                                                    </td>
+                                                );
+                                            })}
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
                     ) : (
                         <h1
                             style={{

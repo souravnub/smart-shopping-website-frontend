@@ -2,6 +2,12 @@
     display: grid;
     grid-template: 1fr / auto 1fr;
     column-gap: 3rem;
+    min-height: 80vh;
+}
+
+.main-admin-page-container .data-container {
+    width: 100%;
+    overflow-x: auto;
 }
 
 .main-admin-page-container .admin-side-bar {
@@ -30,7 +36,7 @@
     .admin-profile-container
     .admin-dp {
     width: 4rem;
-    aspect-ratio: 1;
+    height: 4rem;
     box-shadow: 0 0 5px 1px var(--shadow);
     border-radius: 50%;
     background-position: center center;
