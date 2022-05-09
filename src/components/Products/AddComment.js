@@ -36,13 +36,16 @@ const AddComment = ({ product_id }) => {
                 "https://th.bing.com/th/id/OIP.Cj82nzkyLKNUurmJMcSiLgHaHa?w=180&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
         };
 
-        const user_res = await fetch(`http://localhost:5000/api/auth/getuser`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                token: auth,
-            },
-        });
+        const user_res = await fetch(
+            `https://smart-shopping-website.herokuapp.com/api/auth/getuser`,
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: auth,
+                },
+            }
+        );
         const user_json = await user_res.json();
 
         if (user_json.success) {
@@ -53,7 +56,7 @@ const AddComment = ({ product_id }) => {
         }
 
         const response = await fetch(
-            `http://localhost:5000/api/products/addcomment/${product_id}`,
+            `https://smart-shopping-website.herokuapp.com/api/products/addcomment/${product_id}`,
             {
                 method: "PUT",
                 headers: {

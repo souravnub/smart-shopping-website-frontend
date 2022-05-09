@@ -58,13 +58,16 @@ const ChangeDetails = () => {
     // getting user info
     const getUser = async () => {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/api/auth/getuser", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                token: auth,
-            },
-        });
+        const response = await fetch(
+            "https://smart-shopping-website.herokuapp.com/api/auth/getuser",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: auth,
+                },
+            }
+        );
         const json = await response.json();
         setLoading(false);
         if (json.success) {
@@ -107,7 +110,7 @@ const ChangeDetails = () => {
         }
         setUserLoading(true);
         const response = await fetch(
-            `http://localhost:5000/api/auth/updateuser/${user._id}`,
+            `https://smart-shopping-website.herokuapp.com/api/auth/updateuser/${user._id}`,
             {
                 method: "POST",
                 headers: {
@@ -123,12 +126,12 @@ const ChangeDetails = () => {
             if (user["news letter holder"] !== isHolder) {
                 if (user["news letter holder"] === false) {
                     await fetch(
-                        `http://localhost:5000/newsletter/addremove?action=remove&email=${user.email}`,
+                        `https://smart-shopping-website.herokuapp.com/newsletter/addremove?action=remove&email=${user.email}`,
                         { method: "POST" }
                     );
                 } else {
                     await fetch(
-                        `http://localhost:5000/newsletter/addremove?name=${user.user}&action=add&email=${user.email}`,
+                        `https://smart-shopping-website.herokuapp.com/newsletter/addremove?name=${user.user}&action=add&email=${user.email}`,
                         { method: "POST" }
                     );
                 }

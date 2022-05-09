@@ -104,7 +104,7 @@ const AddProductPage = ({ setAdminReturn }) => {
         setLoading(true);
 
         const response = await fetch(
-            "http://localhost:5000/api/products/addproducts",
+            "https://smart-shopping-website.herokuapp.com/api/products/addproducts",
             {
                 method: "POST",
                 headers: {

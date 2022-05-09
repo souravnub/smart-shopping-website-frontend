@@ -40,7 +40,7 @@ const ReplyMessageModal = () => {
             setError(null);
             setProgress(10);
             const response = await fetch(
-                `http://localhost:5000/messages/reply/${id}`,
+                `https://smart-shopping-website.herokuapp.com/messages/reply/${id}`,
                 {
                     method: "POST",
                     headers: {

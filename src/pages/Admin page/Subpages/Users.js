@@ -29,7 +29,7 @@ const Users = () => {
     const getUsers = async () => {
         setLoading(true);
         const response = await fetch(
-            "http://localhost:5000/api/auth/getallusers",
+            "https://smart-shopping-website.herokuapp.com/api/auth/getallusers",
             {
                 method: "GET",
                 headers: {
@@ -53,7 +53,7 @@ const Users = () => {
         if (i) {
             setUserDeleteLoading(true);
             const response = await fetch(
-                `http://localhost:5000/api/auth/promoteuser/${id}`,
+                `https://smart-shopping-website.herokuapp.com/api/auth/promoteuser/${id}`,
                 {
                     method: "POST",
                     headers: {
@@ -81,7 +81,7 @@ const Users = () => {
             setUserDeleteLoading(true);
 
             const response = await fetch(
-                `http://localhost:5000/api/auth/deleteuser/${id}`,
+                `https://smart-shopping-website.herokuapp.com/api/auth/deleteuser/${id}`,
                 {
                     method: "POST",
                     headers: {

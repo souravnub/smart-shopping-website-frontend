@@ -23,17 +23,20 @@ const ContactForm = () => {
 
         if (message.length > 20) {
             setMessageLoading(true);
-            const response = await fetch("http://localhost:5000/messages/add", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    user: name,
-                    email: email,
-                    message: message,
-                }),
-            });
+            const response = await fetch(
+                "https://smart-shopping-website.herokuapp.com/messages/add",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        user: name,
+                        email: email,
+                        message: message,
+                    }),
+                }
+            );
             const json = await response.json();
             setMessageLoading(false);
 
@@ -53,7 +56,7 @@ const ContactForm = () => {
         e.preventDefault();
 
         const response = await fetch(
-            `http://localhost:5000/newsletter/addremove?name=${nameRef.current.value}&email=${emailRef.current.value}&action=add`,
+            `https://smart-shopping-website.herokuapp.com/newsletter/addremove?name=${nameRef.current.value}&email=${emailRef.current.value}&action=add`,
             {
                 method: "POST",
                 headers: {

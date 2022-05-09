@@ -56,7 +56,7 @@ const AppProvider = ({ children }) => {
 
     const fetch_products = async () => {
         const response = await fetch(
-            "http://localhost:5000/api/products/getallproducts"
+            "https://smart-shopping-website.herokuapp.com/api/products/getallproducts"
         );
         const json = await response.json();
 
@@ -65,13 +65,16 @@ const AppProvider = ({ children }) => {
 
     const fetch_is_admin = async () => {
         setAdminLoading(true);
-        const response = await fetch("http://localhost:5000/api/auth/getuser", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                token: auth,
-            },
-        });
+        const response = await fetch(
+            "https://smart-shopping-website.herokuapp.com/api/auth/getuser",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: auth,
+                },
+            }
+        );
         const json = await response.json();
 
         if (json.success) {

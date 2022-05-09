@@ -39,13 +39,16 @@ const Dashboard = () => {
 
     async function getAdminDashboardData() {
         setProgress(30);
-        const response = await fetch("http://localhost:5000/admin/data", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                token: auth,
-            },
-        });
+        const response = await fetch(
+            "https://smart-shopping-website.herokuapp.com/admin/data",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: auth,
+                },
+            }
+        );
         const json = await response.json();
         setProgress(100);
         if (json.success) {
@@ -87,7 +90,7 @@ const Dashboard = () => {
     async function handleMessageDelete(id) {
         setProgress(10);
         const response = await fetch(
-            `http://localhost:5000/messages/delete/${id}`,
+            `https://smart-shopping-website.herokuapp.com/messages/delete/${id}`,
             {
                 method: "POST",
                 headers: {

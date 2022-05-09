@@ -24,13 +24,16 @@ const MessagesPage = () => {
         if (isAdmin) {
             setLoading(true);
             setProgress(10);
-            const response = await fetch("http://localhost:5000/messages/all", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: auth,
-                },
-            });
+            const response = await fetch(
+                "https://smart-shopping-website.herokuapp.com/messages/all",
+                {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        token: auth,
+                    },
+                }
+            );
             setProgress(40);
             const json = await response.json();
             setProgress(100);
@@ -44,7 +47,7 @@ const MessagesPage = () => {
     async function handleMessageDelete(id) {
         setProgress(10);
         const response = await fetch(
-            `http://localhost:5000/messages/delete/${id}`,
+            `https://smart-shopping-website.herokuapp.com/messages/delete/${id}`,
             {
                 method: "POST",
                 headers: {

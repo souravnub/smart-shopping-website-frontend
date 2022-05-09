@@ -19,13 +19,16 @@ const NewsletterPage = () => {
 
     const getUsers = async () => {
         setProgress(30);
-        const response = await fetch("http://localhost:5000/newsletter/all", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                token: auth,
-            },
-        });
+        const response = await fetch(
+            "https://smart-shopping-website.herokuapp.com/newsletter/all",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: auth,
+                },
+            }
+        );
         setProgress(60);
         const json = await response.json();
         setProgress(100);
@@ -40,7 +43,7 @@ const NewsletterPage = () => {
         setProgress(0);
         setDeleteLoading(true);
         const response = await fetch(
-            `http://localhost:5000/newsletter/addremove?email=${email}&action=remove`,
+            `https://smart-shopping-website.herokuapp.com/newsletter/addremove?email=${email}&action=remove`,
             {
                 method: "POST",
             }

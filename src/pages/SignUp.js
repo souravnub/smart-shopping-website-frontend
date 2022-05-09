@@ -72,7 +72,7 @@ const SignIn = () => {
                 setLoading(true);
 
                 const response = await fetch(
-                    "http://localhost:5000/api/auth/signup",
+                    "https://smart-shopping-website.herokuapp.com/api/auth/signup",
                     {
                         method: "POST",
                         headers: {

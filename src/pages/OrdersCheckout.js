@@ -32,13 +32,16 @@ const OrdersCheckout = () => {
     const headers_arr = ["S No.", "Product", "Prcie", "Quantity", "Sub Total"];
 
     const fetchUserData = async () => {
-        const response = await fetch("http://localhost:5000/api/auth/getuser", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                token: auth,
-            },
-        });
+        const response = await fetch(
+            "https://smart-shopping-website.herokuapp.com/api/auth/getuser",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: auth,
+                },
+            }
+        );
         const json = await response.json();
 
         if (!json.success) {
@@ -114,7 +117,7 @@ const OrdersCheckout = () => {
 
         setProductCheckLoading(true);
         const productsFromDB_res = await fetch(
-            `http://localhost:5000/api/products/getproducts${qs}`,
+            `https://smart-shopping-website.herokuapp.com/api/products/getproducts${qs}`,
             {
                 method: "GET",
                 headers: {
@@ -153,7 +156,7 @@ const OrdersCheckout = () => {
         if (!(out_arr.length > 0)) {
             setProgress(30);
             const response = await fetch(
-                "http://localhost:5000/orders/addorder",
+                "https://smart-shopping-website.herokuapp.com/orders/addorder",
                 {
                     method: "POST",
                     headers: {

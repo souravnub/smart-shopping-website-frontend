@@ -64,7 +64,7 @@ const OrderInfoModal = () => {
         }
         setProgress(20);
         const response = await fetch(
-            `http://localhost:5000/orders/edit?id=${id}&orderId=${orderId}`,
+            `https://smart-shopping-website.herokuapp.com/orders/edit?id=${id}&orderId=${orderId}`,
             {
                 method: "POST",
                 headers: {
@@ -89,7 +89,7 @@ const OrderInfoModal = () => {
     async function handleRemoveOrder(id, orderId) {
         setProgress(30);
         const response = await fetch(
-            `http://localhost:5000/orders/delete?id=${id}&orderId=${orderId}`,
+            `https://smart-shopping-website.herokuapp.com/orders/delete?id=${id}&orderId=${orderId}`,
             {
                 method: "POST",
                 headers: {

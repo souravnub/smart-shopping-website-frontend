@@ -19,13 +19,16 @@ const OrdersDetails = () => {
 
     const fetchData = async () => {
         setLoading(true);
-        const response = await fetch("http://localhost:5000/orders/allorders", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                token: localStorage.getItem("ShopAuthtoken"),
-            },
-        });
+        const response = await fetch(
+            "https://smart-shopping-website.herokuapp.com/orders/allorders",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    token: localStorage.getItem("ShopAuthtoken"),
+                },
+            }
+        );
 
         const json = await response.json();
 
