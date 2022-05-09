@@ -52,13 +52,16 @@ const AppProvider = ({ children }) => {
 
     // temp state created because useeffect for cartlist was not working
     const [tempState, setTempState] = useState(0);
+    const [productLoading, setProductLoading] = useState(false);
     const [productsList, setProductsList] = useState([]);
 
     const fetch_products = async () => {
+        setProductLoading(true);
         const response = await fetch(
             "https://smart-shopping-website.herokuapp.com/api/products/getallproducts"
         );
         const json = await response.json();
+        setProductLoading(false);
 
         return setProductsList(json.products);
     };
@@ -268,6 +271,8 @@ const AppProvider = ({ children }) => {
         <AppContext.Provider
             value={{
                 fetch_products,
+                setProductLoading,
+                productLoading,
                 isCartOpen,
                 setIsCartOpen,
                 cartList,

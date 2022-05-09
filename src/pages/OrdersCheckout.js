@@ -347,28 +347,32 @@ const OrdersCheckout = () => {
                 <span className="heading">
                     <MdArrowRight /> Cart Overview
                 </span>
-                <table className="content-table" style={{ marginTop: "3rem" }}>
-                    <thead>
-                        <tr>
-                            {headers_arr.map((header) => {
-                                return <th key={header}>{header}</th>;
+                <div className="table-container">
+                    <table
+                        className="content-table"
+                        style={{ marginTop: "3rem" }}>
+                        <thead>
+                            <tr>
+                                {headers_arr.map((header) => {
+                                    return <th key={header}>{header}</th>;
+                                })}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cartList.map((item, idx) => {
+                                return (
+                                    <tr key={idx}>
+                                        <td>{idx + 1}.</td>
+                                        <td>{item.name}</td>
+                                        <td>${item.price}</td>
+                                        <td>{item.amount}</td>
+                                        <td>${item.amount * item.price}</td>
+                                    </tr>
+                                );
                             })}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cartList.map((item, idx) => {
-                            return (
-                                <tr key={idx}>
-                                    <td>{idx + 1}.</td>
-                                    <td>{item.name}</td>
-                                    <td>${item.price}</td>
-                                    <td>{item.amount}</td>
-                                    <td>${item.amount * item.price}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             {cartList.length !== 0 ? (

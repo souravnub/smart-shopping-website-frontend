@@ -25,7 +25,6 @@ html {
     text-transform: capitalize;
     padding: 2rem 0;
     font-size: 0.9rem;
-    line-height: 1.6;
 }
 /* .Toastify__toast-body {
     width: min(95%, max-content);
@@ -412,14 +411,18 @@ nav {
     grid-template: auto / auto auto;
 }
 
+.product-search .product-search-container button {
+    width: 100%;
+    height: 100%;
+}
+
 .product-search .product-search-container .icon {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding: 0.4rem 0.8rem;
-    width: 100%;
-    height: 100%;
+    padding: 0.45rem;
+    font-size: 2rem;
 
     background-color: var(--hover-link-color);
 }
@@ -861,8 +864,8 @@ nav {
     font-weight: 500;
     opacity: 0.3;
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(2.6rem, 1vw + 1rem, 3rem);
+    margin-bottom: 2rem;
+    font-size: clamp(2.2rem, 3vw + 1rem, 3rem);
 }
 
 .products-container {
@@ -1366,6 +1369,11 @@ nav {
     transition: transform 300ms ease;
 }
 
+.main-orders-checkout-container .cart-review-container .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 .orders-checkout-container {
     display: flex;
     align-items: center;
@@ -1445,7 +1453,7 @@ nav {
     flex-direction: column;
     align-items: center;
 
-    max-width: 90%;
+    max-width: 100%;
     background-color: var(--alt-bg-color);
 
     padding: 1.5rem;
@@ -1454,11 +1462,11 @@ nav {
 }
 
 .contact-form-container > * + * {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .contact-form-container > span {
-    font-size: 2.5rem;
+    font-size: clamp(1.9rem, 2vw + 1rem, 2.5rem);
     font-weight: 300;
     opacity: 0.4;
     margin-bottom: 1.4rem;
@@ -2620,6 +2628,18 @@ nav {
     }
     .products-container .product .product-info {
         row-gap: 1rem;
+    }
+    .main-orders-checkout-container
+        .cart-review-container
+        .table-container
+        .content-table
+        th,
+    .main-orders-checkout-container
+        .cart-review-container
+        .table-container
+        .content-table
+        td {
+        padding: 0.9rem;
     }
 }
 

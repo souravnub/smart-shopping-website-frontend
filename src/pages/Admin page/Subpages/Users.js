@@ -106,12 +106,12 @@ const Users = () => {
     };
 
     useEffect(() => {
-        if (!isAdmin) {
-            return <NotFoundPage />;
-        }
-
         getUsers();
     }, []);
+
+    if (!isAdmin) {
+        return <NotFoundPage />;
+    }
 
     return (
         <div className="main-admin-page-container">
@@ -152,7 +152,7 @@ const Users = () => {
                                                             key={idx}
                                                             style={{
                                                                 textTransform: `${
-                                                                    idx === 3
+                                                                    idx === 5
                                                                         ? "none"
                                                                         : "capitalize"
                                                                 }`,
@@ -206,8 +206,8 @@ const Users = () => {
                                                                         marginInline:
                                                                             "auto",
                                                                     }}></div>
-                                                            ) : idx === 5 ||
-                                                              idx === 6 ? (
+                                                            ) : idx === 7 ||
+                                                              idx === 8 ? (
                                                                 genDate(value)
                                                             ) : idx === 9 ? (
                                                                 <div className="users-options-container">

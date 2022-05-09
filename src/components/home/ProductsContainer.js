@@ -7,11 +7,14 @@ import { FiSearch } from "react-icons/fi";
 import { FaCartArrowDown, FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CategoryNavigation from "./CategoryNavigation";
+import Spinner from "../Spinner";
 
 // accept category here as prop and then use that /////
 const ProductsContainer = ({ trending, req_category }) => {
     const {
         productsList,
+        productLoading,
+        setProductLoading,
         setLikedProductsList,
         likedProductsList,
         dispatchAlert,
@@ -104,6 +107,7 @@ const ProductsContainer = ({ trending, req_category }) => {
                           }`
                         : "All Products"}
                 </h1>
+
                 {!trending && (
                     <div className="product-search">
                         <CategoryNavigation
@@ -124,142 +128,160 @@ const ProductsContainer = ({ trending, req_category }) => {
                         </form>
                     </div>
                 )}
-                <div
-                    className={`products-container ${
-                        !trending ||
-                        (req_category === null && "liked-products-container")
-                    }`}>
-                    {productsList.length === 0 ? (
-                        <span
-                            style={{
-                                fontWeight: "300",
-                                fontSize: "1rem",
 
-                                textAlign: "center",
-                                margin: "4rem 0",
-                            }}>
-                            sorry we are currently out of stock !! New stock
-                            will be added soon ... stay tuned !!
-                        </span>
-                    ) : listToMap.length > 0 ? (
-                        listToMap.map((product) => {
-                            const {
-                                image_url,
-                                name,
-                                comments,
-                                price,
-                                _id,
-                                actualPrice,
-                                in_stock,
-                            } = product;
+                {productLoading ? (
+                    <div style={{ marginBlock: "5rem" }}>
+                        <Spinner
+                            size="2.4rem"
+                            text="fetching products ..."
+                            textSize="1.3rem"
+                        />
+                    </div>
+                ) : (
+                    <div
+                        className={`products-container ${
+                            !trending ||
+                            (req_category === null &&
+                                "liked-products-container")
+                        }`}>
+                        {productsList.length === 0 ? (
+                            <span
+                                style={{
+                                    fontWeight: "300",
+                                    fontSize: "1rem",
 
-                            let ratingVal = 0;
-                            if (comments) {
-                                comments.forEach((comment) => {
-                                    if (comment.user_rating) {
-                                        ratingVal += comment.user_rating;
-                                    }
-                                });
-                                ratingVal = ratingVal / comments.length;
-                            }
-                            return (
-                                <div className="product" key={_id}>
-                                    <div
-                                        className="img-section"
-                                        style={{
-                                            backgroundImage: `url(${image_url})`,
-                                        }}></div>
-                                    <span
-                                        style={
-                                            in_stock
-                                                ? {
-                                                      backgroundColor:
-                                                          "#70ff70",
-                                                  }
-                                                : {
-                                                      backgroundColor:
-                                                          "#ff5252",
-                                                  }
-                                        }>
-                                        {in_stock
-                                            ? "Stock Available"
-                                            : "Out of Sotck"}
-                                    </span>
-                                    <div className="product-info">
-                                        <span className="product-name">
-                                            {name}
+                                    textAlign: "center",
+                                    margin: "4rem 0",
+                                }}>
+                                sorry we are currently out of stock !! New stock
+                                will be added soon ... stay tuned !!
+                            </span>
+                        ) : listToMap.length > 0 ? (
+                            listToMap.map((product) => {
+                                const {
+                                    image_url,
+                                    name,
+                                    comments,
+                                    price,
+                                    _id,
+                                    actualPrice,
+                                    in_stock,
+                                } = product;
+
+                                let ratingVal = 0;
+                                if (comments) {
+                                    comments.forEach((comment) => {
+                                        if (comment.user_rating) {
+                                            ratingVal += comment.user_rating;
+                                        }
+                                    });
+                                    ratingVal = ratingVal / comments.length;
+                                }
+                                return (
+                                    <div className="product" key={_id}>
+                                        <div
+                                            className="img-section"
+                                            style={{
+                                                backgroundImage: `url(${image_url})`,
+                                            }}></div>
+                                        <span
+                                            style={
+                                                in_stock
+                                                    ? {
+                                                          backgroundColor:
+                                                              "#70ff70",
+                                                      }
+                                                    : {
+                                                          backgroundColor:
+                                                              "#ff5252",
+                                                      }
+                                            }>
+                                            {in_stock
+                                                ? "Stock Available"
+                                                : "Out of Sotck"}
                                         </span>
-                                        <div className="product-rating">
-                                            <StarRatings
-                                                rating={
-                                                    ratingVal ? ratingVal : 0
-                                                }
-                                                starRatedColor={
-                                                    theme === "dark"
-                                                        ? "#ffff6e"
-                                                        : "black"
-                                                }
-                                                numberOfStars={5}
-                                                starEmptyColor={
-                                                    theme === "dark"
-                                                        ? "white"
-                                                        : "#d4d4d4"
-                                                }
-                                                starDimension="24px"
-                                            />
-                                        </div>
-                                        <span className="product-price">
-                                            ${price} <span>${actualPrice}</span>{" "}
-                                        </span>
-
-                                        <div className="btn-container">
-                                            <Link
-                                                to={`/singleproductinfo/${_id}`}>
-                                                <AiFillInfoCircle />
-                                            </Link>
-
-                                            <FaHeart
-                                                style={{
-                                                    fill: `${
-                                                        likedProductsList.find(
-                                                            (item_id) =>
-                                                                item_id === _id
-                                                        )
-                                                            ? "#ff4747"
-                                                            : theme === "dark"
-                                                            ? "white"
+                                        <div className="product-info">
+                                            <span className="product-name">
+                                                {name}
+                                            </span>
+                                            <div className="product-rating">
+                                                <StarRatings
+                                                    rating={
+                                                        ratingVal
+                                                            ? ratingVal
+                                                            : 0
+                                                    }
+                                                    starRatedColor={
+                                                        theme === "dark"
+                                                            ? "#ffff6e"
                                                             : "black"
-                                                    }`,
-                                                }}
-                                                onClick={() =>
-                                                    handleLikeClick(_id)
-                                                }
-                                            />
+                                                    }
+                                                    numberOfStars={5}
+                                                    starEmptyColor={
+                                                        theme === "dark"
+                                                            ? "white"
+                                                            : "#d4d4d4"
+                                                    }
+                                                    starDimension="24px"
+                                                />
+                                            </div>
+                                            <span className="product-price">
+                                                ${price}{" "}
+                                                <span>${actualPrice}</span>{" "}
+                                            </span>
 
-                                            {in_stock ? (
-                                                <Link to={`/addtocart/${_id}`}>
-                                                    <FaCartArrowDown />
+                                            <div className="btn-container">
+                                                <Link
+                                                    to={`/singleproductinfo/${_id}`}>
+                                                    <AiFillInfoCircle />
                                                 </Link>
-                                            ) : (
-                                                <FaCartArrowDown className="disabled" />
-                                            )}
+
+                                                <FaHeart
+                                                    style={{
+                                                        fill: `${
+                                                            likedProductsList.find(
+                                                                (item_id) =>
+                                                                    item_id ===
+                                                                    _id
+                                                            )
+                                                                ? "#ff4747"
+                                                                : theme ===
+                                                                  "dark"
+                                                                ? "white"
+                                                                : "black"
+                                                        }`,
+                                                    }}
+                                                    onClick={() =>
+                                                        handleLikeClick(_id)
+                                                    }
+                                                />
+
+                                                {in_stock ? (
+                                                    <Link
+                                                        to={`/addtocart/${_id}`}>
+                                                        <FaCartArrowDown />
+                                                    </Link>
+                                                ) : (
+                                                    <FaCartArrowDown className="disabled" />
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            );
-                        })
-                    ) : (
-                        <h2
-                            style={{
-                                fontSize: "2.4rem",
-                                opacity: 0.3,
-                                textAlign: "center",
-                                marginTop: "2rem",
-                            }}>
-                            No Products Found !
-                        </h2>
-                    )}
-                </div>
+                                );
+                            })
+                        ) : (
+                            <h2
+                                style={{
+                                    fontSize: "2.4rem",
+                                    opacity: 0.3,
+                                    textAlign: "center",
+                                    marginTop: "2rem",
+                                }}>
+                                No Products Found !
+                            </h2>
+                        )}
+                    </div>
+                )}
 
                 {trending ? (
                     <Link to="/products" className="blue-link">
