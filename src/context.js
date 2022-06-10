@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-    // for the top loading bar
+    const port = "https://smart-shopping-website.herokuapp.com";
+
     const [progress, setProgress] = useState(0);
 
     const [theme, setTheme] = useState(
@@ -57,9 +58,7 @@ const AppProvider = ({ children }) => {
 
     const fetch_products = async () => {
         setProductLoading(true);
-        const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/products/getallproducts"
-        );
+        const response = await fetch(`${port}/api/products/getallproducts`);
         const json = await response.json();
         setProductLoading(false);
 
@@ -68,16 +67,13 @@ const AppProvider = ({ children }) => {
 
     const fetch_is_admin = async () => {
         setAdminLoading(true);
-        const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/auth/getuser",
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    token: auth,
-                },
-            }
-        );
+        const response = await fetch(`${port}/api/auth/getuser`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                token: auth,
+            },
+        });
         const json = await response.json();
 
         if (json.success) {

@@ -48,6 +48,8 @@ function App() {
         document.body.style.overflow = "auto";
     }
 
+    ////////////////////////................... instead of using data-urls for images use binary images...... as data-urls' long size was causing problems and errors
+
     return (
         <>
             <HammenuContainer />
