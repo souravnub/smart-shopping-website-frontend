@@ -5,7 +5,7 @@
 
 .main-order-info-modal-container {
     display: none;
-    position: absolute;
+    position: fixed;
     inset: 0;
     z-index: 99999999;
     background-color: var(--shadow);
