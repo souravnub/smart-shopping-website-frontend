@@ -27,8 +27,6 @@ const Dashboard = () => {
         setProgress,
     } = useGlobalContext();
 
-    const chartRef = useRef();
-
     const [progressValue, setProgressValue] = useState(0);
     const [products, setProducts] = useState([]);
     const [messages, setMessages] = useState([]);

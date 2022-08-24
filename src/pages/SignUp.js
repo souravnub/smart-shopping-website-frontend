@@ -80,7 +80,6 @@ const SignIn = () => {
                         },
                         body: JSON.stringify({
                             user: user,
-                            // img_url for user is not working ... it is not showing anywhere else....
                             user_img: userImg,
                             email: email,
                             password: passwd,

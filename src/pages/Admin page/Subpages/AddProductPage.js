@@ -84,12 +84,11 @@ const AddProductPage = ({ setAdminReturn }) => {
         }
     };
 
-    // not working as the data url is too long...............................................
     const handleAdd = async (e) => {
         e.preventDefault();
 
         let newProduct = {
-            image_url: productImg,
+            image_data_str: productImg,
             name: nameVal,
             price: priceVal,
             main_category: mainCategory,

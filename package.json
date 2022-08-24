@@ -3,6 +3,8 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@cloudinary/react": "^1.4.2",
+        "@cloudinary/url-gen": "^1.8.6",
         "@mui/icons-material": "^5.5.1",
         "@mui/material": "^5.5.2",
         "@testing-library/jest-dom": "^5.16.3",
