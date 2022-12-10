@@ -8,6 +8,9 @@
 #Backend
 Backend/
 
+#env file
+.env
+
 # testing
 /coverage
 
