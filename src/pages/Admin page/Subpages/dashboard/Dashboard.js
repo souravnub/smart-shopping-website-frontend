@@ -38,7 +38,7 @@ const Dashboard = () => {
     async function getAdminDashboardData() {
         setProgress(30);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/admin/data",
+            `${process.env.REACT_APP_BACKEND_URL}/admin/data`,
             {
                 method: "GET",
                 headers: {
@@ -88,7 +88,7 @@ const Dashboard = () => {
     async function handleMessageDelete(id) {
         setProgress(10);
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/messages/delete/${id}`,
+            `${process.env.REACT_APP_BACKEND_URL}/messages/delete/${id}`,
             {
                 method: "POST",
                 headers: {

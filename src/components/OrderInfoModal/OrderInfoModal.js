@@ -64,7 +64,7 @@ const OrderInfoModal = () => {
         }
         setProgress(20);
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/orders/edit?id=${id}&orderId=${orderId}`,
+            `${process.env.REACT_APP_BACKEND_URL}/orders/edit?id=${id}&orderId=${orderId}`,
             {
                 method: "POST",
                 headers: {
@@ -89,7 +89,7 @@ const OrderInfoModal = () => {
     async function handleRemoveOrder(id, orderId) {
         setProgress(30);
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/orders/delete?id=${id}&orderId=${orderId}`,
+            `${process.env.REACT_APP_BACKEND_URL}/orders/delete?id=${id}&orderId=${orderId}`,
             {
                 method: "POST",
                 headers: {

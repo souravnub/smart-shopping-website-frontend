@@ -21,7 +21,7 @@ const MyAccount = () => {
     const fetchUserData = async () => {
         setLoading(true);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/auth/getuser",
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser`,
             {
                 method: "GET",
                 headers: {

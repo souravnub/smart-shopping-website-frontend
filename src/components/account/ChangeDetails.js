@@ -59,7 +59,7 @@ const ChangeDetails = () => {
     const getUser = async () => {
         setLoading(true);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/auth/getuser",
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser`,
             {
                 method: "GET",
                 headers: {
@@ -110,7 +110,7 @@ const ChangeDetails = () => {
         }
         setUserLoading(true);
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/api/auth/updateuser/${user._id}`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/updateuser/${user._id}`,
             {
                 method: "POST",
                 headers: {
@@ -126,12 +126,12 @@ const ChangeDetails = () => {
             if (user["news letter holder"] !== isHolder) {
                 if (user["news letter holder"] === false) {
                     await fetch(
-                        `https://smart-shopping-website.herokuapp.com/newsletter/addremove?action=remove&email=${user.email}`,
+                        `${process.env.REACT_APP_BACKEND_URL}/newsletter/addremove?action=remove&email=${user.email}`,
                         { method: "POST" }
                     );
                 } else {
                     await fetch(
-                        `https://smart-shopping-website.herokuapp.com/newsletter/addremove?name=${user.user}&action=add&email=${user.email}`,
+                        `${process.env.REACT_APP_BACKEND_URL}/newsletter/addremove?name=${user.user}&action=add&email=${user.email}`,
                         { method: "POST" }
                     );
                 }

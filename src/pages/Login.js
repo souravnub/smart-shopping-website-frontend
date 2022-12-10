@@ -24,7 +24,7 @@ const CreateAccount = () => {
 
         setLoading(true);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/auth/login",
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/login`,
             {
                 method: "POST",
                 headers: {

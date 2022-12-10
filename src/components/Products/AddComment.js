@@ -37,7 +37,7 @@ const AddComment = ({ product_id }) => {
         };
 
         const user_res = await fetch(
-            `https://smart-shopping-website.herokuapp.com/api/auth/getuser`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser`,
             {
                 method: "GET",
                 headers: {
@@ -56,7 +56,7 @@ const AddComment = ({ product_id }) => {
         }
 
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/api/products/addcomment/${product_id}`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/products/addcomment/${product_id}`,
             {
                 method: "PUT",
                 headers: {

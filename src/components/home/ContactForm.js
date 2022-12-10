@@ -24,7 +24,7 @@ const ContactForm = () => {
         if (message.length > 20) {
             setMessageLoading(true);
             const response = await fetch(
-                "https://smart-shopping-website.herokuapp.com/messages/add",
+                `${process.env.REACT_APP_BACKEND_URL}/messages/add`,
                 {
                     method: "POST",
                     headers: {
@@ -56,7 +56,7 @@ const ContactForm = () => {
         e.preventDefault();
 
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/newsletter/addremove?name=${nameRef.current.value}&email=${emailRef.current.value}&action=add`,
+            `${process.env.REACT_APP_BACKEND_URL}/newsletter/addremove?name=${nameRef.current.value}&email=${emailRef.current.value}&action=add`,
             {
                 method: "POST",
                 headers: {

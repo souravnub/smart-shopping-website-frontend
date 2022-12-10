@@ -20,7 +20,7 @@ const NewsletterPage = () => {
     const getUsers = async () => {
         setProgress(30);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/newsletter/all",
+            `${process.env.REACT_APP_BACKEND_URL}/newsletter/all`,
             {
                 method: "GET",
                 headers: {
@@ -43,7 +43,7 @@ const NewsletterPage = () => {
         setProgress(0);
         setDeleteLoading(true);
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/newsletter/addremove?email=${email}&action=remove`,
+            `${process.env.REACT_APP_BACKEND_URL}/newsletter/addremove?email=${email}&action=remove`,
             {
                 method: "POST",
             }

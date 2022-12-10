@@ -126,7 +126,7 @@ const EditProductPage = ({ setAdminReturn }) => {
     async function getProduct() {
         setLoading(true);
         const res = await fetch(
-            `https://smart-shopping-website.herokuapp.com/api/products/getproducts?p1=${id}`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/products/getproducts?p1=${id}`,
             {
                 method: "GET",
                 headers: {
@@ -215,7 +215,7 @@ const EditProductPage = ({ setAdminReturn }) => {
 
         setUpdateLoading(true);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/products/updateproducts",
+            `${process.env.REACT_APP_BACKEND_URL}/api/products/updateproducts`,
             {
                 method: "POST",
                 headers: {

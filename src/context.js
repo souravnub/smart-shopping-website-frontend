@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-    const port = "https://smart-shopping-website.herokuapp.com";
+    const port = process.env.REACT_APP_BACKEND_URL;
+    console.log(port);
 
     const [progress, setProgress] = useState(0);
 

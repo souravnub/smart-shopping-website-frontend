@@ -29,7 +29,7 @@ const Users = () => {
     const getUsers = async () => {
         setLoading(true);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/auth/getallusers",
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/getallusers`,
             {
                 method: "GET",
                 headers: {
@@ -53,7 +53,7 @@ const Users = () => {
         if (i) {
             setUserDeleteLoading(true);
             const response = await fetch(
-                `https://smart-shopping-website.herokuapp.com/api/auth/promoteuser/${id}`,
+                `${process.env.REACT_APP_BACKEND_URL}/api/auth/promoteuser/${id}`,
                 {
                     method: "POST",
                     headers: {
@@ -81,7 +81,7 @@ const Users = () => {
             setUserDeleteLoading(true);
 
             const response = await fetch(
-                `https://smart-shopping-website.herokuapp.com/api/auth/deleteuser/${id}`,
+                `${process.env.REACT_APP_BACKEND_URL}/api/auth/deleteuser/${id}`,
                 {
                     method: "POST",
                     headers: {

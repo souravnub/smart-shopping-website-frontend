@@ -103,7 +103,7 @@ const AddProductPage = ({ setAdminReturn }) => {
         setLoading(true);
 
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/products/addproducts",
+            `${process.env.REACT_APP_BACKEND_URL}/api/products/addproducts`,
             {
                 method: "POST",
                 headers: {

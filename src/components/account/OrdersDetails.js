@@ -20,7 +20,7 @@ const OrdersDetails = () => {
     const fetchData = async () => {
         setLoading(true);
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/orders/allorders",
+            `${process.env.REACT_APP_BACKEND_URL}/orders/allorders`,
             {
                 method: "GET",
                 headers: {

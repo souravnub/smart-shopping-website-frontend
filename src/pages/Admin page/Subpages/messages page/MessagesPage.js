@@ -25,7 +25,7 @@ const MessagesPage = () => {
             setLoading(true);
             setProgress(10);
             const response = await fetch(
-                "https://smart-shopping-website.herokuapp.com/messages/all",
+                `${process.env.REACT_APP_BACKEND_URL}/messages/all`,
                 {
                     method: "GET",
                     headers: {
@@ -47,7 +47,7 @@ const MessagesPage = () => {
     async function handleMessageDelete(id) {
         setProgress(10);
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/messages/delete/${id}`,
+            `${process.env.REACT_APP_BACKEND_URL}/messages/delete/${id}`,
             {
                 method: "POST",
                 headers: {

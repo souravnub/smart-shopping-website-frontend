@@ -24,7 +24,7 @@ const ProductsPage = () => {
         setLoading(true);
 
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/api/products/deleteproducts`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/products/deleteproducts`,
             {
                 method: "POST",
                 headers: {
@@ -59,7 +59,7 @@ const ProductsPage = () => {
         setLoading(true);
 
         const response = await fetch(
-            `https://smart-shopping-website.herokuapp.com/api/products/getproductsbycategory?category=${currentCategory}`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/products/getproductsbycategory?category=${currentCategory}`,
             {
                 method: "GET",
                 headers: {

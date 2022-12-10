@@ -33,7 +33,7 @@ const OrdersCheckout = () => {
 
     const fetchUserData = async () => {
         const response = await fetch(
-            "https://smart-shopping-website.herokuapp.com/api/auth/getuser",
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/getuser`,
             {
                 method: "GET",
                 headers: {
@@ -117,7 +117,7 @@ const OrdersCheckout = () => {
 
         setProductCheckLoading(true);
         const productsFromDB_res = await fetch(
-            `https://smart-shopping-website.herokuapp.com/api/products/getproducts${qs}`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/products/getproducts${qs}`,
             {
                 method: "GET",
                 headers: {
@@ -156,7 +156,7 @@ const OrdersCheckout = () => {
         if (!(out_arr.length > 0)) {
             setProgress(30);
             const response = await fetch(
-                "https://smart-shopping-website.herokuapp.com/orders/addorder",
+                `${process.env.REACT_APP_BACKEND_URL}/orders/addorder`,
                 {
                     method: "POST",
                     headers: {
