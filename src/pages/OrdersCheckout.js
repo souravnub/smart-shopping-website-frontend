@@ -310,7 +310,11 @@ const OrdersCheckout = () => {
                             </option>
 
                             {servicealblePinCodes.map((pincode) => (
-                                <option value={pincode}>{pincode}</option>
+                                <option
+                                    selected={pincode == pinCode}
+                                    value={pincode}>
+                                    {pincode}
+                                </option>
                             ))}
                         </select>
                     </div>
