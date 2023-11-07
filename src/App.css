@@ -1399,13 +1399,13 @@ nav {
 
     padding: 4rem 5rem;
 }
-
-.orders-checkout-container .inputs-grid .service-check {
-    font-size: 0.7rem;
-    margin-top: 0.5rem;
-    display: block;
-    text-transform: capitalize;
-    font-weight: 300;
+.orders-checkout-container .inputs-grid select {
+    width: 100%;
+    padding: 0.6rem 0.5rem;
+    color: var(--text-color);
+    background-color: white;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .contact-section .joined-newsletter-container {

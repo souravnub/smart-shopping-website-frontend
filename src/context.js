@@ -4,7 +4,6 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
     const port = process.env.REACT_APP_BACKEND_URL;
-    console.log(port);
 
     const [progress, setProgress] = useState(0);
 

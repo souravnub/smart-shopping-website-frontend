@@ -301,30 +301,18 @@ const OrdersCheckout = () => {
                     </div>
 
                     <div>
-                        <input
-                            type="number"
-                            id="pinconde"
-                            placeholder=" "
-                            value={pinCode}
-                            onChange={(e) => {
-                                setPinCode(e.target.value);
-                            }}
-                        />
-                        <label htmlFor="pincode">PinCode</label>
+                        <select
+                            onLoadCapture={() => console.log("loaded")}
+                            onChange={(e) => setPinCode(e.target.value)}
+                            id="pincode">
+                            <option selected value="">
+                                Select a pincode
+                            </option>
 
-                        <span
-                            className="service-check"
-                            style={{
-                                color: isPinCodeServiceable
-                                    ? theme === "dark"
-                                        ? "#b0ffb0"
-                                        : "#00ab00"
-                                    : "#ff5454",
-                            }}>
-                            {isPinCodeServiceable
-                                ? "* pincode available for service"
-                                : "* pincode not available for service"}
-                        </span>
+                            {servicealblePinCodes.map((pincode) => (
+                                <option value={pincode}>{pincode}</option>
+                            ))}
+                        </select>
                     </div>
 
                     <div className="col-2">
@@ -410,7 +398,10 @@ const OrdersCheckout = () => {
                         className="disabled"
                         type="button"
                         onClick={() =>
-                            dispatchAlert("error", "pincode is not servicable")
+                            dispatchAlert(
+                                "error",
+                                "Please select a valid pincode"
+                            )
                         }>
                         <BsCheck2All className="icon" />
                         <span>Pay</span> <span> ${totalSum}</span>
